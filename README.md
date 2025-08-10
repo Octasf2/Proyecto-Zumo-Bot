@@ -1,51 +1,68 @@
-# Proyecto HCI: Control Bluetooth para Carrito con ESP32
+# Proyecto HCI: Control Bluetooth para Carrito y Juego de Laberinto
 
-Este proyecto implementa un sistema de control remoto por Bluetooth para un carrito usando un microcontrolador ESP32. La comunicación Bluetooth recibe comandos desde una app móvil (creada con MIT App Inventor) que controla el movimiento del carrito.
+Este proyecto abarca dos módulos principales:
+
+1. **Control remoto por Bluetooth para un carrito con ESP32**  
+   Sistema para controlar un carrito mediante comandos Bluetooth enviados desde una app móvil desarrollada con MIT App Inventor.
+
+2. **Juego de laberinto en MIT App Inventor**  
+   Un juego móvil con interfaz gráfica donde el jugador controla un sprite dentro de un laberinto evitando paredes y obstáculos.
 
 ---
 
 ## Funcionalidades
 
-- Conexión Bluetooth con ESP32.  
-- Comandos para mover el carrito: avanzar, retroceder, izquierda, derecha, parar, etc.  
-- App móvil con botones para controlar el carrito en tiempo real.  
-- Manejo básico de desconexiones y reconexiones Bluetooth.  
+### Control Bluetooth para carrito
+- Comunicación Bluetooth con ESP32 para enviar comandos.  
+- Movimientos: avanzar, retroceder, girar izquierda/derecha, detenerse.  
+- App móvil con botones para control remoto.
+
+### Juego de laberinto
+- Canvas con ImageSprite que representa al jugador.  
+- Colisiones para evitar atravesar paredes.  
+- Múltiples niveles con transición entre pantallas.  
+- Control táctil para mover el sprite.
 
 ---
 
 ## Tecnologías usadas
 
-- Microcontrolador ESP32.  
-- Bluetooth Serial (BLE o clásico).  
-- MIT App Inventor para la app móvil.  
-- Arduino IDE o PlatformIO para programación ESP32.  
+- ESP32 (Arduino IDE)  
+- Bluetooth Serial  
+- MIT App Inventor (app móvil y juego)  
+- Diseño de interfaces en MIT App Inventor  
 
 ---
 
 ## Instalación y uso
 
-1. Cargar el código fuente al ESP32 usando Arduino IDE.  
-2. Instalar la app móvil en un teléfono Android (archivo APK o a través de MIT App Inventor).  
-3. Emparejar el teléfono con el ESP32 vía Bluetooth.  
-4. Usar los botones en la app para controlar el carrito.  
+### Carrito Bluetooth
+1. Programar el ESP32 con el código fuente usando Arduino IDE.  
+2. Instalar la app móvil desde MIT App Inventor o APK.  
+3. Emparejar Bluetooth y usar los controles para mover el carrito.
+
+### Juego de laberinto
+1. Abrir el proyecto en MIT App Inventor.  
+2. Ejecutar en un emulador o dispositivo móvil.  
+3. Navegar por el laberinto usando controles táctiles.
 
 ---
 
-## Estructura del código
+## Estructura del proyecto
 
-- `main.ino` o archivo principal del ESP32 con la lógica Bluetooth y movimiento.  
-- `app.aia` proyecto de MIT App Inventor (opcional para distribución).  
+- `carrito/` — Código del ESP32 para control Bluetooth.  
+- `app/` — Proyecto de MIT App Inventor para controlar el carrito.  
+- `juego_laberinto/` — Proyecto MIT App Inventor con el juego de laberinto.  
 
 ---
 
-## Consideraciones
+## Notas y consideraciones
 
-- La conexión Bluetooth puede desconectarse si se envían comandos específicos (por ejemplo, 'A' y 'B'), se está trabajando en la depuración.  
-- El código puede ser ampliado para soporte de más comandos o sensores adicionales.  
+- Se está trabajando en mejorar la estabilidad de la conexión Bluetooth para evitar desconexiones inesperadas.  
+- El juego puede ampliarse con más niveles y funcionalidades.  
 
 ---
 
 ## Licencia
 
-MIT License (u otra si tienes preferencia)  
-
+MIT License
