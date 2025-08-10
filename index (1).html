@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Conversor CSV → JSON</title>
+</head>
+<body>
+  <h4>Escuchando datos desde App Inventor...</h4>
+  <script>
+    window.addEventListener("message", function(event) {
+      const textoPlano = event.data;
+
+      // Convertir texto plano a JSON
+      const pares = textoPlano.split(";").map(par => par.split("="));
+      const datos = Object.fromEntries(pares);
+
+      console.log("📦 JSON convertido:", datos);
+
+      // Enviar a servidor
+      fetch("https://dry-springs-20735-bb95a27d9e9e.herokuapp.com/guardar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datos)
+      })
+      .then(res => res.json()) // 👈 Cambiado a JSON
+      .then(respuesta => {
+        console.log("🔍 Respuesta recibida:", respuesta);
+      
+        if ("resultado" in respuesta && respuesta.resultado !== undefined) {
+          window.AppInventor.setWebViewString(String(respuesta.resultado));
+        } else {
+          window.AppInventor.setWebViewString("-1");  // valor de seguridad
+        }
+      })
+      .catch(err => console.error("❌ Error:", err));
+    });
+  </script>
+</body>
+</html>
